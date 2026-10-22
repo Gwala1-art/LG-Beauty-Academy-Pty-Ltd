@@ -95,10 +95,13 @@ Before launch, the business must provide and approve its actual logo, contact de
 
 ## Deploy
 
-1. Push this project to the empty GitHub repository.
-2. Import the repository into Vercel (or another Next.js-compatible host) and use the default Next.js build command `npm run build`.
-3. Add the environment variables in the host's encrypted project settings. Use a public production URL for `PAYSTACK_CALLBACK_URL`.
-4. Run the Supabase schema in the production project, configure real business data, register the production Paystack webhook, and perform test-mode bookings/payments before enabling live mode.
-5. Review privacy, refund and booking terms with the business before publishing, and verify database backups, restricted access and MFA.
+### Render
 
-The local workspace did not include Node.js/npm or Git when inspected, so install/build/lint checks and a local development server could not be run in this environment.
+1. In Render, create a **Web Service** from this GitHub repository and select the branch to deploy.
+2. Use `npm ci && npm run build` as the build command and `npm run start` as the start command. The service must use Node.js 20.9 or newer; set `NODE_VERSION` to a supported 20.x release if you need to pin it.
+3. Add the required environment variables from the table above in the Render service's environment settings. Add `NEXT_PUBLIC_*` business details only after the owner confirms them. Keep Supabase's service-role key and Paystack's secret key server-only.
+4. Run `supabase/schema.sql` against the production Supabase project and configure only approved services, prices, travel zones, availability and course sessions.
+5. Keep `PAYMENTS_ENABLED=false` until test checkout and webhook verification have passed. If enabling Paystack, set `PAYSTACK_CALLBACK_URL` to the public Render URL ending in `/api/payments/callback`, register `/api/payments/webhook`, and test before switching to live credentials.
+6. Review privacy, refund and booking terms with the business before launch. Verify database backups, restricted access and MFA.
+
+Render deploys the Next.js app as a Node web service; no local file storage is used for booking data. Deployment still requires configured Supabase credentials for booking and enquiry submissions. Vercel and other Next.js-compatible hosts can use the same build and start commands, with environment variables configured in their respective project settings.

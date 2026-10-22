@@ -2,6 +2,11 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { getSupabase } from "@/lib/supabase";
 
+export const metadata = {
+  title: "Booking Payment Status",
+  description: "Check the verified payment status of a booking request with LG Beauty Academy.",
+};
+
 export default async function BookingCompletePage({ searchParams }: { searchParams: Promise<{ reference?: string }> }) {
   const params = await searchParams;
   let paymentStatus = "pending";

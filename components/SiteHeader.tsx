@@ -22,10 +22,10 @@ export default function SiteHeader() {
         <span className="wordmark-monogram">LG</span>
         <span className="wordmark-copy"><strong>LG BEAUTY</strong><small>ACADEMY PTY LTD</small></span>
       </Link>
-      <button className="menu-toggle" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>
+      <button className="menu-toggle" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="primary-navigation" onClick={() => setOpen(!open)}>
         {open ? <X size={21} /> : <Menu size={21} />}
       </button>
-      <nav className={open ? "primary-nav is-open" : "primary-nav"} aria-label="Main navigation">
+      <nav id="primary-navigation" className={open ? "primary-nav is-open" : "primary-nav"} aria-label="Main navigation">
         {links.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}</Link>)}
         <Link className="nav-cta" href="/booking" onClick={() => setOpen(false)}>Book now <span aria-hidden="true">↗</span></Link>
       </nav>

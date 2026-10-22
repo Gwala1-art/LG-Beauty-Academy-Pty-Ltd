@@ -2,6 +2,11 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ContactEnquiryForm from "@/components/ContactEnquiryForm";
 
+export const metadata = {
+  title: "Contact",
+  description: "Contact LG Beauty Academy about mobile beauty services, travel coverage, makeup classes or a booking.",
+};
+
 export default function ContactPage() {
   const email = process.env.NEXT_PUBLIC_BUSINESS_EMAIL;
   const phone = process.env.NEXT_PUBLIC_BUSINESS_PHONE;
