@@ -2,7 +2,7 @@
 
 Premium mobile beauty and makeup education website built with Next.js 15, React 19, TypeScript, Supabase/Postgres and an optional Paystack hosted checkout.
 
-The repository supplied for this project was empty. This workspace contains the new application. Prices, service coverage, dates, contact information and credentials are intentionally not invented. Until the business configures those details, booking and class pages clearly present quote/request states rather than claiming availability.
+This workspace contains the LG Beauty Academy application. Confirmed menu prices are R850 for Soft Glam Makeup, R1,000 for Full Glam Makeup, R1,500 for Bridal Makeup, and R2,500 for a two-day makeup class including a goodie bag. Service coverage, dates, contact information and credentials remain subject to business configuration; booking and class requests are not confirmations.
 
 ## Run locally
 
@@ -45,15 +45,15 @@ Copy `.env.example` to `.env.local` locally and set values only in the server en
 ## Supabase setup
 
 1. Create a Supabase project in the business owner's account.
-2. In the SQL Editor, run [`supabase/schema.sql`](supabase/schema.sql) once. It creates services, travel zones, availability, bookings, courses, class sessions, registrations, enquiries and payment records. The example catalogue rows are inactive and have no prices or dates.
+2. In the SQL Editor, run [`supabase/schema.sql`](supabase/schema.sql). It creates services, travel zones, availability, bookings, courses, class sessions, registrations, enquiries and payment records. Services and courses remain inactive until the business activates them. The confirmed makeup services and two-day class prices are included; class dates still need to be added.
 3. Add the project URL and service-role key to `.env.local` or your deployment provider's server environment. Restart the development server after changing environment values.
 4. In the Supabase Table Editor, configure only business-approved values:
-   - `services`: review descriptions/durations, enter approved `price_cents` and optional `deposit_cents`, then set `is_active` true.
+   - `services`: review descriptions/durations, verify Soft Glam Makeup at `85000` cents, Full Glam Makeup at `100000` cents and Bridal Makeup at `150000` cents; set only approved services active. Optional deposits remain unset until confirmed.
    - `travel_zones`: add supported zone names and approved `fee_cents`, then activate them. Leave an address outside these zones as a quote request.
    - `service_addons`: add approved add-ons and prices, then activate them.
    - `availability_slots`: create appointment start/end timestamps with timezone-aware values, associate a service or leave `service_id` empty for a general slot, and set `is_available` true.
-   - `courses`: review course copy, learning outcomes and duration, add approved prices if applicable, then activate the course.
-   - `class_sessions`: add course-linked start/end timestamps, approved session prices if applicable, seat counts and active status. Public class dates and registration choices come from these rows.
+   - `courses`: review course copy and learning outcomes; confirmed classes are configured as two days at `250000` cents (R2,500), with a goodie bag included. Activate only courses the business is currently offering.
+   - `class_sessions`: add course-linked start/end timestamps, seat counts and active status. The two-day class price is prefilled; public dates and registration choices come from these rows.
 5. Keep Supabase project access limited to trusted operators and enable MFA. Customer and payment tables have RLS enabled and no `anon` or `authenticated` grants. The service-role key is used only by server routes; do not create public admin endpoints.
 
 Amounts in database `*_cents` fields use South African cents (R1.00 = 100). Leave a price `NULL` until approved; do not use zero as a placeholder for a paid service.

@@ -4,22 +4,25 @@ import braidedLook from "../img/a7331eaa-7831-4a67-9798-1fab913c5a9e.jpg";
 import academyPortrait from "../img/IMG_0358.jpg";
 import glamMakeup from "../img/IMG_6213.jpg";
 
+export const formatZar = (cents: number) =>
+  `R${new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(cents / 100)}`;
+
 export const serviceCatalog = [
-  { name: "Soft Glam Makeup", description: "A polished, skin-first look with softly defined eyes and a luminous finish, created around your features and occasion.", duration: "Allow 90 minutes" },
-  { name: "Full Glam Makeup", description: "A more defined, camera-ready makeup look with a customised finish for evenings, celebrations and special moments.", duration: "Allow 120 minutes" },
-  { name: "Bridal Makeup", description: "Thoughtful bridal beauty, planned for your day and delivered at your chosen location, subject to travel coverage.", duration: "Consultation required" },
+  { name: "Soft Glam Makeup", description: "A polished, skin-first look with softly defined eyes and a luminous finish, created around your features and occasion.", duration: "Allow 90 minutes", priceCents: 85000 },
+  { name: "Full Glam Makeup", description: "A more defined, camera-ready makeup look with a customised finish for evenings, celebrations and special moments.", duration: "Allow 120 minutes", priceCents: 100000 },
+  { name: "Bridal Makeup", description: "Thoughtful bridal beauty, planned for your day and delivered at your chosen location, subject to travel coverage.", duration: "Consultation required", priceCents: 150000 },
   { name: "Special Occasion Makeup", description: "Personal makeup artistry for birthdays, graduations, celebrations, events and everything worth remembering.", duration: "Allow 90 minutes" },
   { name: "Hairstyling", description: "Event hairstyling to complement your look. Style, hair preparation and timing are confirmed during consultation.", duration: "Confirmed on enquiry" },
   { name: "Mobile Makeup Services", description: "Professional makeup artistry at home or another agreed location. Travel availability and fees are confirmed before booking.", duration: "Varies by service" },
 ];
 
 export const classCatalog = [
-  { name: "Beginner Makeup Class", description: "Build a comfortable foundation, explore your makeup kit and practise a simple, wearable routine.", outcomes: "Product basics, skin preparation, complexion and everyday application", duration: "Scheduled by arrangement" },
-  { name: "Soft Glam Masterclass", description: "Learn a softly defined glam look, from complexion preparation through to balanced finishing details.", outcomes: "Skin prep, soft definition, blending and polished finishing", duration: "Scheduled by arrangement" },
-  { name: "Full Glam Masterclass", description: "Explore a more defined occasion look and practise techniques for a confident, camera-ready finish.", outcomes: "Fuller coverage, eye definition, blending and long-wear finishing", duration: "Scheduled by arrangement" },
-  { name: "Bridal Makeup Training", description: "A focused learning session exploring bridal makeup planning and application. Content and experience are confirmed before enrolment.", outcomes: "Consultation, look planning, application and day-of considerations", duration: "By arrangement" },
-  { name: "One-on-One Makeup Lesson", description: "A personal session shaped around your experience, goals, features and the products you already own.", outcomes: "A tailored routine, guided practice and individual feedback", duration: "By arrangement" },
-  { name: "Personal Makeup Coaching", description: "Ongoing, individual guidance to help you refine your technique and feel more confident with makeup.", outcomes: "Personal goals, practical technique and next-step guidance", duration: "By arrangement" },
+  { name: "Beginner Makeup Class", description: "Build a comfortable foundation, explore your makeup kit and practise a simple, wearable routine.", outcomes: "Product basics, skin preparation, complexion and everyday application", duration: "2 days", priceCents: 250000 },
+  { name: "Soft Glam Masterclass", description: "Learn a softly defined glam look, from complexion preparation through to balanced finishing details.", outcomes: "Skin prep, soft definition, blending and polished finishing", duration: "2 days", priceCents: 250000 },
+  { name: "Full Glam Masterclass", description: "Explore a more defined occasion look and practise techniques for a confident, camera-ready finish.", outcomes: "Fuller coverage, eye definition, blending and long-wear finishing", duration: "2 days", priceCents: 250000 },
+  { name: "Bridal Makeup Training", description: "A focused learning session exploring bridal makeup planning and application. Content and experience are confirmed before enrolment.", outcomes: "Consultation, look planning, application and day-of considerations", duration: "2 days", priceCents: 250000 },
+  { name: "One-on-One Makeup Lesson", description: "A personal session shaped around your experience, goals, features and the products you already own.", outcomes: "A tailored routine, guided practice and individual feedback", duration: "2 days", priceCents: 250000 },
+  { name: "Personal Makeup Coaching", description: "Ongoing, individual guidance to help you refine your technique and feel more confident with makeup.", outcomes: "Personal goals, practical technique and next-step guidance", duration: "2 days", priceCents: 250000 },
 ];
 
 export const galleryImages = [

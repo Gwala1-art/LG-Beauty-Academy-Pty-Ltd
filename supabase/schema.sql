@@ -73,14 +73,36 @@ create table if not exists public.class_registrations (
   created_at timestamptz not null default now()
 );
 
-insert into public.courses (name, description, learning_outcomes, duration_text, is_active) values
-  ('Beginner Makeup Class', 'Build a comfortable foundation, explore your makeup kit and practise a simple, wearable routine.', 'Product basics, skin preparation, complexion and everyday application', 'Scheduled by arrangement', false),
-  ('Soft Glam Masterclass', 'Learn a softly defined glam look, from complexion preparation through to balanced finishing details.', 'Skin prep, soft definition, blending and polished finishing', 'Scheduled by arrangement', false),
-  ('Full Glam Masterclass', 'Explore a more defined occasion look and practise techniques for a confident, camera-ready finish.', 'Fuller coverage, eye definition, blending and long-wear finishing', 'Scheduled by arrangement', false),
-  ('Bridal Makeup Training', 'A focused learning session exploring bridal makeup planning and application.', 'Consultation, look planning, application and day-of considerations', 'By arrangement', false),
-  ('One-on-One Makeup Lesson', 'A personal session shaped around your experience, goals, features and the products you already own.', 'A tailored routine, guided practice and individual feedback', 'By arrangement', false),
-  ('Personal Makeup Coaching', 'Ongoing, individual guidance to help you refine your technique and feel more confident with makeup.', 'Personal goals, practical technique and next-step guidance', 'By arrangement', false)
+insert into public.courses (name, description, learning_outcomes, duration_text, price_cents, is_active) values
+  ('Beginner Makeup Class', 'Build a comfortable foundation, explore your makeup kit and practise a simple, wearable routine.', 'Product basics, skin preparation, complexion and everyday application', '2 days', 250000, false),
+  ('Soft Glam Masterclass', 'Learn a softly defined glam look, from complexion preparation through to balanced finishing details.', 'Skin prep, soft definition, blending and polished finishing', '2 days', 250000, false),
+  ('Full Glam Masterclass', 'Explore a more defined occasion look and practise techniques for a confident, camera-ready finish.', 'Fuller coverage, eye definition, blending and long-wear finishing', '2 days', 250000, false),
+  ('Bridal Makeup Training', 'A focused learning session exploring bridal makeup planning and application.', 'Consultation, look planning, application and day-of considerations', '2 days', 250000, false),
+  ('One-on-One Makeup Lesson', 'A personal session shaped around your experience, goals, features and the products you already own.', 'A tailored routine, guided practice and individual feedback', '2 days', 250000, false),
+  ('Personal Makeup Coaching', 'Ongoing, individual guidance to help you refine your technique and feel more confident with makeup.', 'Personal goals, practical technique and next-step guidance', '2 days', 250000, false)
 on conflict (name) do nothing;
+
+update public.courses
+set duration_text = '2 days', price_cents = 250000
+where name in (
+  'Beginner Makeup Class',
+  'Soft Glam Masterclass',
+  'Full Glam Masterclass',
+  'Bridal Makeup Training',
+  'One-on-One Makeup Lesson',
+  'Personal Makeup Coaching'
+);
+
+update public.class_sessions
+set price_cents = 250000
+where course_id in (select id from public.courses where name in (
+  'Beginner Makeup Class',
+  'Soft Glam Masterclass',
+  'Full Glam Masterclass',
+  'Bridal Makeup Training',
+  'One-on-One Makeup Lesson',
+  'Personal Makeup Coaching'
+));
 
 create table if not exists public.bookings (
   id uuid primary key default gen_random_uuid(),
@@ -161,6 +183,10 @@ insert into public.services (name, description, duration_minutes, is_active) val
   ('Hairstyling', 'Event hairstyling confirmed by consultation.', null, false),
   ('Mobile Makeup Services', 'Makeup artistry at an agreed location.', null, false)
 on conflict (name) do nothing;
+
+update public.services set price_cents = 85000 where name = 'Soft Glam Makeup';
+update public.services set price_cents = 100000 where name = 'Full Glam Makeup';
+update public.services set price_cents = 150000 where name = 'Bridal Makeup';
 
 alter table public.services enable row level security;
 alter table public.service_addons enable row level security;

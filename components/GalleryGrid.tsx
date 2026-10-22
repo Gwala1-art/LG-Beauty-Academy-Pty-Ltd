@@ -12,7 +12,7 @@ export default function GalleryGrid() {
     <div className="gallery-filters" aria-label="Filter gallery">
       {filters.map((value) => <button type="button" key={value} className="filter-chip" aria-pressed={filter === value} onClick={() => setFilter(value)}>{value}</button>)}
     </div>
-    <div className="gallery-grid" aria-live="polite">{items.map((image) => <figure className="gallery-item" key={image.label}><Image src={image.src} alt={image.alt} fill sizes="(max-width: 400px) 84vw, (max-width: 760px) 42vw, 27vw" /><span>{image.label}</span></figure>)}</div>
+    <div className="gallery-grid" aria-live="polite">{items.map((image) => <figure className="gallery-item" key={image.label}><Image src={image.src} alt={image.alt} fill quality={90} sizes="(max-width: 400px) 84vw, (max-width: 760px) 42vw, 27vw" /><span>{image.label}</span></figure>)}</div>
     <p className="notice-box" style={{ marginTop: 25 }}>These photos were provided by LG Beauty Academy. Contact the academy for details about the services shown.</p>
   </>;
 }
