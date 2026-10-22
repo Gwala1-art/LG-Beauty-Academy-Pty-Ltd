@@ -1,3 +1,9 @@
+import bridalUpdo from "../img/1.jpg";
+import softGlam from "../img/5ab311cb-5d85-4810-8f11-e68c8388e208.jpg";
+import braidedLook from "../img/a7331eaa-7831-4a67-9798-1fab913c5a9e.jpg";
+import academyPortrait from "../img/IMG_0358.jpg";
+import glamMakeup from "../img/IMG_6213.jpg";
+
 export const serviceCatalog = [
   { name: "Soft Glam Makeup", description: "A polished, skin-first look with softly defined eyes and a luminous finish, created around your features and occasion.", duration: "Allow 90 minutes" },
   { name: "Full Glam Makeup", description: "A more defined, camera-ready makeup look with a customised finish for evenings, celebrations and special moments.", duration: "Allow 120 minutes" },
@@ -17,12 +23,11 @@ export const classCatalog = [
 ];
 
 export const galleryImages = [
-  { category: "Soft glam", label: "Soft glam study", src: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85", alt: "Editorial portrait with natural makeup" },
-  { category: "Full glam", label: "Evening beauty", src: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85", alt: "Beauty portrait with defined makeup" },
-  { category: "Bridal makeup", label: "Bridal inspiration", src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85", alt: "Bridal beauty inspiration portrait" },
-  { category: "Hairstyling", label: "Beauty editorial", src: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85", alt: "Fashion editorial portrait with styled hair" },
-  { category: "Classes", label: "Creative learning", src: "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=900&q=85", alt: "Portrait used as a makeup education moodboard" },
-  { category: "Soft glam", label: "Fresh complexion", src: "https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?auto=format&fit=crop&w=900&q=85", alt: "Soft beauty editorial portrait" },
+  { category: "Soft glam", label: "Soft glam", src: softGlam, alt: "Soft glam makeup look with the LG Beauty Academy cape" },
+  { category: "Makeup artistry", label: "Golden eye makeup", src: glamMakeup, alt: "Golden eye makeup with defined lashes" },
+  { category: "Hair styling", label: "Braided updo", src: braidedLook, alt: "Braided updo paired with a finished makeup look" },
+  { category: "Academy", label: "At the academy", src: academyPortrait, alt: "LG Beauty Academy team member in branded workwear" },
+  { category: "Bridal hairstyling", label: "Pearl-accented bridal updo", src: bridalUpdo, alt: "Elegant low updo decorated with pearl hair accessories" },
 ];
 
 export const policies = {

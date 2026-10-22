@@ -89,7 +89,7 @@ Refund requests are stored for operator review. Refund decisions and processing 
 
 Public pages: Home, About, Services, Bridal, Hair Styling, Makeup Classes, Gallery, Online Booking, Contact, Booking Policy, Refund Policy, Privacy Policy and Terms. Cancellation requests are available at `/booking/cancel`; verified payment status is at `/booking/complete`.
 
-The gallery uses Next.js image optimization with remote Unsplash editorial placeholders and explicitly labels them as inspiration, not LG Beauty Academy clients. Replace entries in `lib/content.ts` with business-owned images only after confirming usage rights and client consent.
+The homepage and gallery use locally stored photos from the `img` folder, bundled and optimized by Next.js. To add or replace gallery photos, place approved image files in `img` and update the imports and `galleryImages` entries in `lib/content.ts`. Confirm client consent before publishing identifiable photos.
 
 Before launch, the business must provide and approve its actual logo, contact details, service area/travel zones, services and prices, deposit amounts, available dates, class schedule/pricing, final booking/refund/privacy terms, and image releases. This scaffold does not include a custom admin dashboard or email/SMS notification service; trusted operators manage data in the private Supabase dashboard, and booking references are shown after form submission. Configure a transactional email provider separately if automatic confirmations/receipts by email are required.
 
